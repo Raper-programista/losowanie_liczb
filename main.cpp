@@ -25,11 +25,20 @@ int main() {
   int  check = 0;
 
   //wprowadzenie danych
-  cout << "Podaj dwie liczby (od 20 do 70): " << endl;
-  cout << "Ile liczb: ";
+  cout << "Podaj dwie liczby (od 20 do 70): " << endl << endl;
+  cout << "1 liczba to: ";
   cin >> count;
-  cout << "Z jakiego przedziału: ";
+  cout << "2 liczba to: ";
   cin >> interval; 
+
+  if(count < 20 ||
+     count > 70 ||
+     interval < 20 ||
+     interval > 70)
+     {
+       cout << endl << "Podno błędną wartość";
+       return 0;
+     }
 
   vector <int> wart;
 
@@ -41,43 +50,34 @@ int main() {
   }
    // sumuj co trzecią liczbą 
     for (int i=0; i <= wart.size(); i++)
-    {
-      if(i%3 == 0)
-        sum += wart[3];
-    }
-    cout << "Suma: " << sum << endl;
+  {
+     if(i%3 == 0)
+       sum += wart[3];
+   }
+   cout << endl << "Suma co 3 elementu tablicy: " << sum << endl;
 
     //średnia
-    avrige = (wart[0] + wart[count-1]) / 2;
-    cout << endl << "Średnia: " << avrige << endl << endl;
+   avrige = (wart[0] + wart[count-1]) / 2;
+   cout << endl << "Średnia z pierwszej i ostatniej: " << avrige << endl << endl;
     
-    //Wypisz liczby większe od średniej
-    for (int i=0; i <= wart.size(); i++)
-    {
-
-
-      if(wart[i] > avrige)
-      {
-        if(check++ > 0) 
-          cout << ", ";
-        
-        cout << wart[i];
-      }
+   //Wypisz liczby większe od średniej
+   for (int i=0; i <= wart.size(); i++)
+   {
+     if(wart[i] > avrige)
+     {
+      if(check++ > 0)    cout << ", ";// wstaw przecinek pomiędzy liczbami
+  
+      cout << wart[i];
+     }
     }
 
     minimum = checkMinimum(wart);
-    cout << endl << endl << "Minimum: " << minimum << endl;
+    cout << endl << endl << "Najmniejsza wylosowana liczba: " << minimum << endl;
 
     cout << endl << "Wypisz wszystkie: " << endl;
 
-    for(int i=0; i<wart.size(); i++){
-
-      if(wart[i] < 10) cout << " "; // zapewna estetyczne odstepy
-
+    for(int i=0; i<wart.size(); i++)
       cout <<  wart[i] << " ";     
-    }
-
-
-
+    
   return 0;
 }
